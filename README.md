@@ -155,6 +155,11 @@ Click **"Review + Create"** to **Create the ```geoip``` Watchlist**
 
 ![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
 
+This should take a while:
+
+- Allow time for these files to “upload” from your computer into Sentinel / Log Analytics Workspace.
+
+⚠️ There are about 27k rows/records
 
 
 
