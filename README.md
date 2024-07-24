@@ -1,6 +1,6 @@
 <br>
 
-<h1 align="center">Geo IP Data Ingestion + Log Analytics & Microsoft Sentinel (SIEM) Setup</h1>
+<h1 align="center">Log Analytics Workspace & Microsoft Sentinel (SIEM) Setup</h1>
 
 <br>
 
