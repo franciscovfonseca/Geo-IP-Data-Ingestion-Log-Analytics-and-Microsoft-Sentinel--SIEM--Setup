@@ -9,17 +9,20 @@
 <br />
 <br />
 
-In this lab we'll set up Log Analytics Workspace as our Central Log Repository, as well as Microsoft Sentinel as our SIEM.
+In this lab we'll set up **Log Analytics Workspace** as our **Central Log Repository****, as well as **Microsoft Sentinel** as our **SIEM**.
 
-Basically we're going to create what we call a "Watchlist" inside of our SIEM (Microsoft Sentinel).
+Basically we're going to create what we call a **"Watchlist"** inside of our **SIEM** (Microsoft Sentinel).
 
-This Watchlist is going to be essentially a big long list of Network Blocks, with the corresponding Longitude, Latitude, City Name and Country Name.
+This Watchlist is going to essentially be a big long list of **Network Blocks**, with the corresponding *Longitude*, *Latitude*, *City Name* and *Country Name*.
 
-And basically we'll use this to derive Geo-location from IP Addresses of Attackers.
+And basically we'll use this to derive **Geo-location from Attacker's IP Addresses**.
 
-So when somebody attacks our Network, for example they fail to login to our Virtual Machine, we'll be able to inspect that Log, match it to a given Network Block, and plot it on the World Map.
+So when somebody **Attacks our Network**, or for example they fail to login to our Virtual Machine, we'll be able to:
+1. Inspect that Log
+2. Match the Log to a given Network Block
+3. and Plot it on the World Map
 
-This way we'll be able to clearly see where the attacks are coming from according to their Geo-Location.
+This way we'll be able to clearly see **Where the Attacks are Coming From**, according to their **Geo-Location**.
 
 <br />
 
@@ -44,26 +47,26 @@ It will open up a new tab, and you can **Download the Raw File**:
 <summary> <h2>2️⃣ Generate some Failed RDP Logs against the windows-vm</h2> </summary>
 <br>
 
-> Then we're going to Create a Log Analytics WorkSpace ➜ our Central Log Repository
+> Then we're going to **Create a Log Analytics WorkSpace** ➜ our **Central Log Repository**
 > 
-> This will be our Centralized Repository for Collecting, Storing, and Analyzing Log Data from various Azure Resources and Services.
+> This will be our **Centralized Repository** for **Collecting, Storing & Analyzing Log Data** from various **Azure Resources and Services**.
 
 <br>
 
-We'll go back to the Azure Portal > search for **"Log Analytics WorkSpace"**:
+We'll go back to the **Azure Portal** > search for **"Log Analytics WorkSpace"**:
 
 ![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
 
 We'll click **"Create log analytics workspace"** and input the following details:
-- Resource group: **"RG-Cyber-Lab"**
-- Name: **"LAW-Cyber-Lab-01"** ➜ ⚠️ it has to be globally unique
-- Region: **East US 2"** ➜ put it in the **Same Region** as the other resources from our environment
+- Resource group: ```RG-Cyber-Lab```
+- Name: ```LAW-Cyber-Lab-01``` ➜ ⚠️ it has to be globally unique
+- Region: ```East US 2``` ➜ put it in the **Same Region** as the other resources from our environment
 
 We can then just click **"Review + Create"**:
 
 ![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
 
-✅ Our Log Analytics Workspace is now created.
+✅ Our **Log Analytics Workspace** is now created.
 
 <br>
 
@@ -75,9 +78,9 @@ We can then just click **"Review + Create"**:
 <summary> <h2>3️⃣ Setup Microsoft Sentinel & Connect it to our Log Analytics Workspace</h2> </summary>
 <br>
 
-> So after creating our Log Analytics Workspace, we're going to attach our Sentinel instance to it.
+> So after creating our **Log Analytics Workspace**, we're going to attach our **Sentinel** instance to it.
 > 
-> And then ultimately we'll be able to Querie Logs and Plot them on a Map.
+> And then ultimately we'll be able to **Query Logs** and **Plot them on a Map**.
 <br>
 
 Go back to the Azure Portal > search for **"Microsoft Sentinel"**:
@@ -94,7 +97,7 @@ This next step is when we Add the Log Analytics Workspace we just made to our Mi
 
 ![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
 
-✅ We just made the connection between the Microsoft Sentinel and the Log Analytics Workspace
+✅ We just made the connection between the **Microsoft Sentinel** and the **Log Analytics Workspace**.
 
 <br>
 
@@ -113,6 +116,47 @@ This next step is when we Add the Log Analytics Workspace we just made to our Mi
 > Then later we'll use the Geo Data to Plot Attacker's IP Addresses on a Map.
 
 <br>
+
+First we'll through the Azure Portal to **Microsoft Sentinel** > and click on our Sentinel Instance connected to the LAW: ```LAW-Cyber-Lab-01```
+
+![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+
+Then we'll go to **"Watchlists"** on the left ➜ and we're going to **Create a New Watchlist**
+
+![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+
+Now for the Geo IP Watchlist we'll use this details:
+- **General Tab**:
+  - Name & Alias: ```geoip```
+
+![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+
+- **Source Tab**:
+  - Source type: ```Local file```
+  - File type: ```CSV file with a header (.csv)```
+  - Number of lines before row with headings: ```0```
+  - Upload file ➜ We're going to browse for the file that we downloaded to our Desktop earlier:
+    - ```geoip-summarized.csv```
+
+<br>
+
+⚠️ You should be able to see a "valid-looking preview" of the Geo IP File on the right
+
+<br>
+
+- Still inside the **Source Tab**:
+  - Search Key: ```network```
+
+💡 The ***Search Key Column*** is what we're going to use to match the Attacker's IP Addresses to different Network Blocks.
+
+<br>
+
+Click **"Review + Create"** to **Create the ```geoip``` Watchlist**
+
+![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+
+
+
 
 
 
