@@ -1,11 +1,11 @@
 <br>
 
-# Geo IP Data Ingestion + Log Analytics & Azure Sentinel (SIEM) Setup
+<h1 align="center">Geo IP Data Ingestion + Log Analytics & Azure Sentinel (SIEM) Setup</h1>
 
 <br>
 
 
-![Banner](https://github.com/user-attachments/assets/5a8edf3b-7a2d-4573-a24f-d9fca1aa0335)
+![Banner](https://github.com/user-attachments/assets/96bbd164-6182-458d-9eea-fffb113f5c5d)
 <br />
 <br />
 
