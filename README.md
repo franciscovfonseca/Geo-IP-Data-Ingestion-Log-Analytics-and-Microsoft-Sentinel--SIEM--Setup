@@ -1,17 +1,17 @@
 <br>
 
-<h1 align="center">Geo IP Data Ingestion + Log Analytics & Azure Sentinel (SIEM) Setup</h1>
+<h1 align="center">Geo IP Data Ingestion + Log Analytics & Microsoft Sentinel (SIEM) Setup</h1>
 
 <br>
 
 
-![Banner](https://github.com/user-attachments/assets/96bbd164-6182-458d-9eea-fffb113f5c5d)
+![Banner](https://github.com/user-attachments/assets/1cc4caf7-8f6c-4747-aaeb-eeee80212ba0)
 <br />
 <br />
 
-In this lab we'll set up Log Analytics Workspace as our Central Log Repository, as well as Azure Sentinel as our SIEM.
+In this lab we'll set up Log Analytics Workspace as our Central Log Repository, as well as Microsoft Sentinel as our SIEM.
 
-Basically we're going to create what we call a "Watchlist" inside of our SIEM (Azure Sentinel).
+Basically we're going to create what we call a "Watchlist" inside of our SIEM (Microsoft Sentinel).
 
 This Watchlist is going to be essentially a big long list of Network Blocks, with the corresponding Longitude, Latitude, City Name and Country Name.
 
@@ -24,63 +24,15 @@ This way we'll be able to clearly see where the attacks are coming from accordin
 <br />
 
 <details close> 
-<summary> <h2> 1️⃣ Create our Attack Virtual Machine</h2> </summary>
+<summary> <h2> 1️⃣ Download the Geo-Data File</h2> </summary>
 <br>
 
-The first thing we're going to do is Download this Geo-Data CSV file onto our Desktop:
+The first thing we're going to do is **[Download this Geo-Data CSV file](https://github.com/joshmadakor1/Cyber-Course-v2/blob/main/Sentinel-Maps(JSON)/geoip-summarized.csv 
+)** onto our Desktop.
 
-
-
-
-
-
-
-
-
-
-Go to the **Azure Portal** > Click on **Virtual Machines** > **Create a Virtual Machine**:
+It will open up a new tab, and you can **Download the Raw File**:
 
 ![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
-
-
-- Name the Resource Group: ```RG-Cyber-Lab-Attacker```
-- Region:  Outside the US ➜ ```Australia Central``` for example
-- Virtual Machine Name: ```attack-vm```
-- Image: ```Image 10 Pro```
-- Size: at least ```2vcpus```
-- Username: ```labuser```
-- Password: ```Cyberlab123!```
-
-![azure portal](https://github.com/user-attachments/assets/259c4d7a-ca98-4046-93a0-3472a839f47d)
-
-For the **Networking Tab** ➜ Name the **Virtual Network**: ```Lab-VNet-Attacker```
-
-Then click **Review + Create**
-
-![azure portal](https://github.com/user-attachments/assets/fe92eaa7-a8b2-4cee-a0bb-6f7dd36b1450)
-
-<h2></h2>
-
-<br>
-
-Now we're going to log into the Attack VM to make sure it works:
-
-- Copy the Attack Vm's **Public IP Address**:
-
-![azure portal](https://github.com/user-attachments/assets/f614eae5-0760-45a9-8d83-4f5f8ec6f258)
-
-- We're going to open **Microsoft Remote Desktop** > Add a New PC > Paste the **IP Address for the Attack VM**
-
-![azure portal](https://github.com/user-attachments/assets/217832f9-3203-43a2-9b7b-524f0253f7b0)
-
-- Double Click the **"New Added PC"** and type in the **Username & Password Credentials** we set up earlier:
-
-  - Username: ```labuser```
-  - Password: ```Cyberlab123!```
-
-![azure portal](https://github.com/user-attachments/assets/b6622b8a-2af8-4c19-9823-c1f4594ae7e1)
-
-✅ We were able to log in to the VM
 
 <br>
 
@@ -92,13 +44,84 @@ Now we're going to log into the Attack VM to make sure it works:
 <summary> <h2>2️⃣ Generate some Failed RDP Logs against the windows-vm</h2> </summary>
 <br>
 
-> From within the **Attack Vm**, we're going to **attemp to RDP connect to the Windows VM**.
+> Then we're going to Create a Log Analytics WorkSpace ➜ our Central Log Repository
 > 
-> The logins will fail, but some Logs will be generated for us to look at later inside the Windows VM.
+> This will be our Centralized Repository for Collecting, Storing, and Analyzing Log Data from various Azure Resources and Services.
 
 <br>
 
-Go back to the **Azure Portal** and copy the **Public IP Address of the Windows VM**:
+We'll go back to the Azure Portal > search for **"Log Analytics WorkSpace"**:
+
+![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+
+We'll click **"Create log analytics workspace"** and input the following details:
+- Resource group: **"RG-Cyber-Lab"**
+- Name: **"LAW-Cyber-Lab-01"** ➜ ⚠️ it has to be globally unique
+- Region: **East US 2"** ➜ put it in the **Same Region** as the other resources from our environment
+
+We can then just click **"Review + Create"**:
+
+![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+
+✅ Our Log Analytics Workspace is now created.
+
+<br>
+
+  </details>
+
+<h2></h2>
+
+<details close> 
+<summary> <h2>3️⃣ Setup Microsoft Sentinel & Connect it to our Log Analytics Workspace</h2> </summary>
+<br>
+
+> So after creating our Log Analytics Workspace, we're going to attach our Sentinel instance to it.
+> 
+> And then ultimately we'll be able to Querie Logs and Plot them on a Map.
+<br>
+
+Go back to the Azure Portal > search for **"Microsoft Sentinel"**:
+
+![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+
+Click **"Create Microsoft Sentinel"**:
+
+![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+
+This next step is when we Add the Log Analytics Workspace we just made to our Microsoft Sentinel instance:
+
+- We'll click on our **Workspace** > and click **"Add"**:
+
+![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+
+✅ We just made the connection between the Microsoft Sentinel and the Log Analytics Workspace
+
+<br>
+
+  </details>
+
+<h2></h2>
+
+<details close> 
+<summary> <h2>3️⃣ Create the Geo IP Watchlist</h2> </summary>
+<br>
+
+> Once Sentinel is setup ➜ we'll go into Sentinel and we're going to create what's called a Watchlist.
+> 
+> The Watchlist is going to be comprised of that Geo Data from the file we downloaded earlier.
+>
+> Then later we'll use the Geo Data to Plot Attacker's IP Addresses on a Map.
+
+<br>
+
+
+
+
+
+
+
+
+
 
 ![azure portal](https://github.com/user-attachments/assets/55a2c962-8229-4fa1-89df-d7a9264e9e45)
 
