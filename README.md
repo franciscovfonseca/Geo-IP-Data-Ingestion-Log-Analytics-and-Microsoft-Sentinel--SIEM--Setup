@@ -5,7 +5,7 @@
 <br>
 
 
-![Banner](https://github.com/user-attachments/assets/791fb67a-24a8-4d21-890e-6bff45ac9892)
+![Banner](https://github.com/user-attachments/assets/86bbb916-861a-45e6-a1ae-b56da5cb2c40)
 <br />
 <br />
 
@@ -37,7 +37,7 @@ The first thing we're going to do is **[Download this Geo-Data CSV file](https:/
 
 It will open up a new tab, and you can **Download the Raw File**:
 
-![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+![azure portal](https://github.com/user-attachments/assets/77c4197d-2525-4737-b3b3-c6861ba79def)
 
 <br>
 
@@ -57,7 +57,7 @@ It will open up a new tab, and you can **Download the Raw File**:
 
 We'll go back to the **Azure Portal** > search for **"Log Analytics WorkSpace"**:
 
-![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+![azure portal](https://github.com/user-attachments/assets/b2c33e62-f92c-42c9-bcd7-8d1200ff1108)
 
 We'll click **"Create log analytics workspace"** and input the following details:
 - Resource group: ```RG-Cyber-Lab```
@@ -66,7 +66,7 @@ We'll click **"Create log analytics workspace"** and input the following details
 
 We can then just click **"Review + Create"**:
 
-![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+![azure portal](https://github.com/user-attachments/assets/c51e8a9e-3f59-4f8b-880c-f8ccaa93f4a9)
 
 ✅ Our **Log Analytics Workspace** is now created.
 
@@ -87,17 +87,17 @@ We can then just click **"Review + Create"**:
 
 Go back to the Azure Portal > search for **"Microsoft Sentinel"**:
 
-![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+![azure portal](https://github.com/user-attachments/assets/b6477453-2064-4cc5-9e5e-fd1a5689bf7a)
 
 Click **"Create Microsoft Sentinel"**:
 
-![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+![azure portal](https://github.com/user-attachments/assets/eed9d9c9-69ac-446e-b220-42f6e61512e1)
 
 This next step is when we Add the Log Analytics Workspace we just made to our Microsoft Sentinel instance:
 
 - We'll click on our **Workspace** > and click **"Add"**:
 
-![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+![azure portal](https://github.com/user-attachments/assets/20808b86-f860-410d-9391-4e5dada50ab5)
 
 ✅ We just made the connection between the **Microsoft Sentinel** and the **Log Analytics Workspace**.
 
@@ -121,17 +121,17 @@ This next step is when we Add the Log Analytics Workspace we just made to our Mi
 
 First we'll through the Azure Portal to **Microsoft Sentinel** > and click on our Sentinel Instance connected to the LAW: ```LAW-Cyber-Lab-01```
 
-![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+![azure portal](https://github.com/user-attachments/assets/ae218a11-3876-467b-8c3e-c690d6a163a6)
 
 Then we'll go to **"Watchlists"** on the left ➜ and we're going to **Create a New Watchlist**
 
-![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+![azure portal](https://github.com/user-attachments/assets/b968a96f-c314-4e56-8271-f4bf7c8f45e6)
 
 Now for the Geo IP Watchlist we'll use this details:
 - **General Tab**:
   - Name & Alias: ```geoip```
 
-![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+![azure portal](https://github.com/user-attachments/assets/f1f57b45-c0ab-4209-b4dc-cc47faacc779)
 
 - **Source Tab**:
   - Source type: ```Local file```
@@ -155,7 +155,7 @@ Now for the Geo IP Watchlist we'll use this details:
 
 Click **"Review + Create"** to **Create the ```geoip``` Watchlist**
 
-![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+![azure portal](https://github.com/user-attachments/assets/5a5b6d9b-cc8c-4c25-a69e-ec0ccf6cfd37)
 
 This should take a while:
 
@@ -163,7 +163,7 @@ This should take a while:
 
 ⚠️ There are about 26k rows/records
 
-![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+![azure portal](https://github.com/user-attachments/assets/9cbb81b3-04e4-487b-a32e-88b9ca046805)
 
 <h2></h2>
 
@@ -175,11 +175,11 @@ Copy this syntax : ```_GetWatchlist("geoip")```
 
 We'll open the **Log Analytics Workspace** we just created ➜ our Central Log Repository:
 
-![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+![azure portal](https://github.com/user-attachments/assets/565cb732-005c-491a-a7dd-429902c54009)
 
 And now we'll see some of the records inside ➜ click on **"Logs"**
 
-![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+![azure portal](https://github.com/user-attachments/assets/8955d47a-b11f-4820-a162-ac44f57743fc)
 
 <br>
 
@@ -199,7 +199,7 @@ And now we'll see some of the records inside ➜ click on **"Logs"**
 
 Now if we run the Query ➜ once it starts ingesting ➜ a few records should come out here:
 
-![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+![azure portal](https://github.com/user-attachments/assets/e2fae7ef-54cc-4cf6-a502-26f32efcf984)
 
 ✅ So we were able to Query it and see a few  different records inside
 
@@ -211,7 +211,7 @@ Now if we run the Query ➜ once it starts ingesting ➜ a few records should co
 
 So after waiting a bit  ➜ if we go back to the **Watchlist** ➜ we can see that all the 26k records were successfully uploaded as **Watchlist Items** ✅
 
-![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+![azure portal](https://github.com/user-attachments/assets/c518e72e-3304-48d0-a08e-f7481ffee9a9)
 
 Now go back to **Log Analytics Workspace** > go to **"Logs"** again > and **Run this Query**:
 
@@ -221,7 +221,7 @@ _GetWatchlist("geoip")
 ```
 <br>
 
-![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
+![azure portal](https://github.com/user-attachments/assets/dab019eb-8aa8-495f-9b48-944f17f6613a)
 
 ✅ We can see 26k+ records were "counted" as being part of the Watchlist
 
