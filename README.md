@@ -153,7 +153,7 @@ Now for the Geo IP Watchlist we'll use this details:
 
 <br>
 
-Click **"Review + Create"** to **Create the ```geoip``` Watchlist**
+Click **"Review + Create"** to Create the ```geoip``` Watchlist:
 
 ![azure portal](https://github.com/user-attachments/assets/5a5b6d9b-cc8c-4c25-a69e-ec0ccf6cfd37)
 
