@@ -4,9 +4,10 @@
 
 <br>
 
-
-![Banner](https://github.com/user-attachments/assets/86bbb916-861a-45e6-a1ae-b56da5cb2c40)
+<p align="center">
+<img width="800" src="https://github.com/user-attachments/assets/86bbb916-861a-45e6-a1ae-b56da5cb2c40" alt="Banner"/>
 <br />
+
 <br />
 
 In this lab we'll set up **Log Analytics Workspace** as our **Central Log Repository****, as well as **Microsoft Sentinel** as our **SIEM**.
