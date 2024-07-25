@@ -24,7 +24,9 @@ So when somebody **Attacks our Network**, or for example they fail to login to o
 
 This way we'll be able to clearly see **Where the Attacks are Coming From**, according to their **Geo-Location**.
 
-<br />
+<br>
+
+<br>
 
 <details close> 
 <summary> <h2> 1️⃣ Download the Geo-Data File</h2> </summary>
@@ -175,7 +177,7 @@ We'll open the **Log Analytics Workspace** we just created ➜ our Central Log R
 
 ![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
 
-And now we'll see some of the records inside ➜ click on "Logs"
+And now we'll see some of the records inside ➜ click on **"Logs"**
 
 ![azure portal](https://github.com/user-attachments/assets/4032bf0f-95dd-4edd-a1a2-c714da69ba61)
 
@@ -235,23 +237,16 @@ _GetWatchlist("geoip")
 
 <br>
 
-# Conclusion
+# Summary
 
+<br>
 
+In this lab we created a **Log Analytics Workspace**, which is our **Central Repository**.
 
+We also created our **SIEM Instance**, which is **Microsoft Sentinel** ➜ and connected it to the **Log analytics Workspace**.
 
+And then we ingested the **Geo IP Data Records** into our **Sentinel Watchlist**, and later we'll make the **World Maps** using that.
 
-
-
-We have to keep in mind hat if we have, let's say, 1000 computers in our Environment ➜  it would be too laborious to just login into each one of them, and analyse the each log indivudually this way.
-
-That's why we are going to **Automatically Ingest all the Logs into a Central Repository**.
-
-We'll Set Up Queries to Automatically look through the Logs and Alert us on certain Events.
-
-This is the end of our **Logging and Monitoring Lab**, and in the next phases we're going to Inspect Logs, Create Incidents & Respond to those Incidents.
-
-<br />
 
 <br />
 
