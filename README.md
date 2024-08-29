@@ -10,7 +10,7 @@
 
 <br />
 
-In this lab we'll set up **Log Analytics Workspace** as our **Central Log Repository****, as well as **Microsoft Sentinel** as our **SIEM**.
+In this lab we'll set up **Log Analytics Workspace** as our **Central Log Repository**, as well as **Microsoft Sentinel** as our **SIEM**.
 
 Basically we're going to create what we call a **"Watchlist"** inside of our **SIEM** (Microsoft Sentinel).
 
