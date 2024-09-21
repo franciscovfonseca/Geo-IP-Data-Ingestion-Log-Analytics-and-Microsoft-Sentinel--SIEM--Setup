@@ -12,18 +12,20 @@
 
 In this lab we'll set up **Log Analytics Workspace** as our **Central Log Repository**, as well as **Microsoft Sentinel** as our **SIEM**.
 
-Basically we're going to create what we call a **"Watchlist"** inside of our **SIEM** (Microsoft Sentinel).
+<br>
+
+💡 Basically we're going to create what we call a **"Watchlist"** inside of our **SIEM (Microsoft Sentinel)**.
 
 This Watchlist is going to essentially be a long list of **Network Blocks**, with the corresponding *Longitude*, *Latitude*, *City Name* and *Country Name*.
 
-And basically we'll use this to derive **Geo-location from Attacker's IP Addresses**.
+And we'll use this to derive **Geo-location from Attacker's IP Addresses**.
 
 So when somebody **Attacks our Network**, or for example they fail to login to our Virtual Machine, we'll be able to:
 1. Inspect that Log
 2. Match the Log to a given Network Block
 3. and Plot it on the World Map
 
-This way we'll be able to clearly see **Where the Attacks are Coming From**, according to their **Geo-Location**.
+This way we'll be able to clearly see where the attacks are coming from, according to their **Geo-Location**.
 
 <br>
 
